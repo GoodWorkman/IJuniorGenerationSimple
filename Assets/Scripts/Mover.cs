@@ -1,11 +1,16 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
    [SerializeField] private float _speed = 5f;
+
+   private Vector3 _direction;
+
+   public void SetDirection(Vector3 direction)
+   {
+      _direction = direction.normalized;
+   }
 
    private void Start()
    {
@@ -16,7 +21,8 @@ public class Mover : MonoBehaviour
    {
       while (gameObject.activeInHierarchy)
       {
-         transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
+         transform.Translate(_direction * (_speed * Time.deltaTime));
+         
          yield return null;
       }
    }
