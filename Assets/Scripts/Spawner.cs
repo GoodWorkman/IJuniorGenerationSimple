@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     private readonly List<Transform> _spawnPoints = new();
 
     private float _timeToLive = 5f;
+    private float _delayTime = 2f;
 
     private Vector3 _direction;
 
@@ -27,7 +28,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(2f);
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_delayTime);
         
         while (gameObject.activeInHierarchy)
         {
